@@ -84,7 +84,7 @@ publishing {
     repositories {
         maven {
             name = "jeelzzzRepository"
-            url = "https://repo.jeelzzz.xyz/"
+            url = "https://repo.jeelzzz.xyz/snapshots/"
             credentials(org.gradle.api.credentials.PasswordCredentials)
             authentication {
                 basic(BasicAuthentication)
