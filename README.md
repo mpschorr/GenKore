@@ -56,4 +56,5 @@ The .jar file will be found in `build/libs` and is named `GenKore-<version>-all.
 
 ## Credits
 
+- [triumph-cmds](https://github.com/TriumphTeam/triumph-cmds) and [triumph-gui](https://github.com/TriumphTeam/triumph-gui)
 - [Jackson YAML](https://github.com/FasterXML/jackson)
