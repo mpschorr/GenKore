@@ -1,89 +1,111 @@
 gens:
   1:
     id: wheat
-    drop_type: wheat
-    drop_name: "<#ffc569>Wheat"
-    block_type: hay_block
-    block_name: "<#ffc569>&lWheat Generator"
+    drop:
+      type: wheat
+      name: "<#ffc569>Wheat"
+    block:
+      type: hay_block
+      name: "<#ffc569>&lWheat Generator"
     worth: 5
     cost: 750
   2:
     id: pumpkin
-    drop_type: pumpkin_pie
-    drop_name: "<#fc9251>Pumpkin Pie"
-    block_type: pumpkin
-    block_name: "<#fc9251>&lPumpkin Generator"
+    drop:
+      type: pumpkin_pie
+      name: "<#fc9251>Pumpkin Pie"
+    block:
+      type: pumpkin
+      name: "<#fc9251>&lPumpkin Generator"
     worth: 10
     cost: 3000
   3:
     id: melon
-    drop_type: melon_slice
-    drop_name: "<#64fc63>Melon Slice"
-    block_type: melon
-    block_name: "<#64fc63>&lMelon Generator"
+    drop:
+      type: melon_slice
+      name: "<#64fc63>Melon Slice"
+    block:
+      type: melon
+      name: "<#64fc63>&lMelon Generator"
     worth: 15
     cost: 6750
   4:
     id: stone
-    drop_type: stone_button
-    drop_name: "<#797979>Stone Chunk"
-    block_type: stone
-    block_name: "<#797979>&lStone Generator"
+    drop:
+      type: stone_button
+      name: "<#797979>Stone Chunk"
+    block:
+      type: stone
+      name: "<#797979>&lStone Generator"
     worth: 20
     cost: 12000
   5:
     id: gravel
-    drop_type: flint
-    drop_name: "<#484848>Flint"
-    block_type: gravel
-    block_name: "<#484848>&lGravel Generator"
+    drop:
+      type: flint
+      name: "<#484848>Flint"
+    block:
+      type: gravel
+      name: "<#484848>&lGravel Generator"
     worth: 25
     cost: 18750
   6:
     id: coal
-    drop_type: coal
-    drop_name: "<#212121>Coal"
-    block_type: coal_ore
-    block_name: "<#212121>&lCoal Generator"
+    drop:
+      type: coal
+      name: "<#212121>Coal"
+    block:
+      type: coal_ore
+      name: "<#212121>&lCoal Generator"
     worth: 30
     cost: 27000
   7:
     id: iron
-    drop_type: iron_ingot
-    drop_name: "<#ede3d1>Iron"
-    block_type: iron_ore
-    block_name: "<#ede3d1>&lIron Generator"
+    drop:
+      type: iron_ingot
+      name: "<#ede3d1>Iron"
+    block:
+      type: iron_ore
+      name: "<#ede3d1>&lIron Generator"
     worth: 35
     cost: 36750
   8:
     id: gold
-    drop_type: gold_ingot
-    drop_name: "<#ecbf44>Gold"
-    block_type: gold_ore
-    block_name: "<#ecbf44>&lGold Generator"
+    drop:
+      type: gold_ingot
+      name: "<#ecbf44>Gold"
+    block:
+      type: gold_ore
+      name: "<#ecbf44>&lGold Generator"
     worth: 40
     cost: 48000
   9:
     id: redstone
-    drop_type: redstone
-    drop_name: "<#ed4545>Redstone"
-    block_type: redstone_ore
-    block_name: "<#ed4545>&lRedstone Generator"
+    drop:
+      type: redstone
+      name: "<#ed4545>Redstone"
+    block:
+      type: redstone_ore
+      name: "<#ed4545>&lRedstone Generator"
     worth: 45
     cost: 60750
   10:
     id: emerald
-    drop_type: emerald
-    drop_name: "<#33ff69>Emerald"
-    block_type: emerald_ore
-    block_name: "<#33ff69>&lEmerald Generator"
+    drop:
+      type: emerald
+      name: "<#33ff69>Emerald"
+    block:
+      type: emerald_ore
+      name: "<#33ff69>&lEmerald Generator"
     worth: 50
     cost: 75000
   11:
     id: diamond
-    drop_type: diamond
-    drop_name: "<#3ef4f4>Diamond"
-    block_type: diamond_ore
-    block_name: "<#3ef4f4>&lDiamond Generator"
+    drop:
+      type: diamond
+      name: "<#3ef4f4>Diamond"
+    block:
+      type: diamond_ore
+      name: "<#3ef4f4>&lDiamond Generator"
     worth: 55
     cost: 90750

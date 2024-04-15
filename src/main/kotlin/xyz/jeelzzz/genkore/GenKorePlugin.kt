@@ -9,9 +9,15 @@ class GenKorePlugin : JavaPlugin() {
     lateinit var config: MainConfig private set
 
     override fun onEnable() {
+        loadConfig()
+        logger.info(config.toString())
+    }
+
+    private fun loadConfig() {
         configManager = ConfigManager(this)
         configManager.reload(true)
         config = configManager.main
+    }
 
         logger.info(config.toString())
     }

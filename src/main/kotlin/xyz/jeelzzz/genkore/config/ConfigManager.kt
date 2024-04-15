@@ -1,9 +1,16 @@
 package xyz.jeelzzz.genkore.config
 
-import com.charleskorn.kaml.Yaml
-import kotlinx.serialization.InternalSerializationApi
-import kotlinx.serialization.serializer
+import com.fasterxml.jackson.core.StreamReadFeature
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.databind.module.SimpleModule
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactoryBuilder
+import com.fasterxml.jackson.module.kotlin.KotlinModule
+import net.kyori.adventure.text.Component
+import org.bukkit.inventory.ItemStack
 import xyz.jeelzzz.genkore.GenKorePlugin
+import xyz.jeelzzz.genkore.config.deserializers.ItemStackDeserializer
+import xyz.jeelzzz.genkore.config.deserializers.MiniMessageDeserializer
 import xyz.jeelzzz.genkore.config.objects.MainConfig
 import xyz.jeelzzz.genkore.util.log
 import java.io.File
@@ -12,7 +19,21 @@ class ConfigManager(private val plugin: GenKorePlugin) {
 
     lateinit var main: MainConfig private set
 
+    private val mapper = ObjectMapper(
+        YAMLFactoryBuilder(YAMLFactory())
+            .enable(StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION)
+            .build())
+        .registerModule(KotlinModule.Builder().build())
+
     private val configFolder: File = plugin.dataFolder
+
+    init {
+        mapper.findAndRegisterModules()
+        val module = SimpleModule()
+        module.addDeserializer(Component::class.java, MiniMessageDeserializer())
+        module.addDeserializer(ItemStack::class.java, ItemStackDeserializer())
+        mapper.registerModule(module)
+    }
 
     fun reload(initial: Boolean=false) {
         if (!configFolder.exists()) configFolder.mkdirs()
@@ -27,36 +48,13 @@ class ConfigManager(private val plugin: GenKorePlugin) {
         log("&aConfig ${prefix}loaded in &f${end - start}ms")
     }
 
-    @OptIn(InternalSerializationApi::class)
+//    @OptIn(InternalSerializationApi::class)
     private inline fun <reified T : Any> loadConfigFile(filename: String): T {
         val file = File(this.configFolder, filename)
         if (!file.exists()) {
             plugin.saveResource(filename, false)
         }
-        return Yaml.default.decodeFromString(T::class.serializer(), file.readText())
+        return mapper.readValue(file, T::class.java)
+//        return Yaml().decodeFromString(T::class.serializer(), file.readText())
     }
-
-//    private fun createLoader(filename: String): ConfigLoader {
-//        return ConfigLoaderBuilder.default()
-////            .withClassLoader(ClassLoader.getPlatformClassLoader())
-//            .addDefaultDecoders()
-//            .addResourceSource(filename)
-//            .build()
-//    }
-
-//
-//    private inline fun <reified T> createHelper(filename: String, vararg serializers: ValueSerialiser<*>): ConfigurationHelper<T> {
-//        val yamlOptions = SnakeYamlOptions.Builder().commentMode(CommentMode.fullComments()).build()
-//        val optionsBuilder = ConfigurationOptions.Builder()
-//        if (serializers.isNotEmpty()) optionsBuilder.addSerialisers(*serializers)
-//        optionsBuilder.sorter(AnnotationBasedSorter())
-//        val configFactory = SnakeYamlConfigurationFactory.create(T::class.java, optionsBuilder.build(), yamlOptions)
-//
-//        val file = File(configFolder, filename)
-//        if (!file.exists()) {
-//            plugin.getResource(filename)?.let { file.writeBytes(it.readAllBytes()) }
-//        }
-//
-//        return ConfigurationHelper(configFolder.toPath(), filename, configFactory)
-//    }
 }

@@ -26,20 +26,18 @@ repositories {
 dependencies {
     compileOnly 'io.papermc.paper:paper-api:1.20-R0.1-SNAPSHOT'
 
-    compileOnly 'com.charleskorn.kaml:kaml-jvm:0.58.0'
+    compileOnly 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.17.0'
+    compileOnly 'com.fasterxml.jackson.module:jackson-module-kotlin:2.17.0'
 
-//    implementation 'space.arim.dazzleconf:dazzleconf-ext-snakeyaml:1.3.0-M2'
-
-//    implementation 'com.sksamuel.hoplite:hoplite-core:2.7.5'
-//    implementation 'com.sksamuel.hoplite:hoplite-yaml:2.7.5'
-//    compileOnly 'org.yaml:snakeyaml:2.2'
 }
 
 shadowJar {
     exclude 'org/jetbrains/**'
     exclude 'org/intellij/**'
     exclude 'kotlin/**'
-    exclude 'org/yaml/snakeyaml/**'
+    exclude 'net/kyori/**'
+    exclude 'com/google/gson/**'
+//    exclude 'org/yaml/snakeyaml/**'
 
 //    relocate 'com.sksamuel.hoplite', 'xyz.jeelzzz.genkore.lib.conf'
 }
@@ -48,12 +46,7 @@ compileKotlin {
     compilerOptions {
         jvmTarget = JvmTarget.JVM_17
     }
-//    jvmTarget = '17'
 }
-
-//kotlinOptions {
-//    jvmTarget = '17'
-//}
 
 def targetJavaVersion = 17
 java {

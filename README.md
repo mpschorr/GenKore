@@ -56,4 +56,4 @@ The .jar file will be found in `build/libs` and is named `GenKore-<version>-all.
 
 ## Credits
 
-- [kaml](https://github.com/charleskorn/kaml)
+- [Jackson YAML](https://github.com/FasterXML/jackson)
